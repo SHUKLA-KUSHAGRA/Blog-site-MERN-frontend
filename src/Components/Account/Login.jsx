@@ -1,9 +1,11 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState , useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import {Box , TextField , Button , Grid , Typography } from '@mui/material';
 import logo from '../../assets/logo.jpg';
 import './Login.css';
 import { API } from '../../service/api.js';
+import { DataContext } from '../../context/DataProvider';
 
 const signUpInitialValue = {
   name : '',
@@ -16,10 +18,13 @@ const loginInitialValue = {
   password : ''
 }
 
-function Login() {
-  const [account,toggleAccount] = useState('SignUp');
+function Login({isUserAuthenticated}) {
+  const [account,toggleAccount] = useState('Login');
   const [signup , setSignup] = useState(signUpInitialValue);
   const [login , setLogin] = useState(loginInitialValue);
+  const {setAccount} = useContext(DataContext);
+  const navigate = useNavigate();
+  
   const toggle = () => {
     account==='SignUp'? toggleAccount('Login') : toggleAccount('SignUp');
   }
@@ -43,7 +48,12 @@ function Login() {
     let response = await API.userLogin(login);
     if(response.isSuccess)
     {
-        setLogin(loginInitialValue);
+      sessionStorage.setItem('accessToken',`Bearer ${response.data.accessToken}`);
+      sessionStorage.setItem('refreshToken',`Bearer ${response.data.refreshToken}`);
+      setAccount({username : response.data.username , name : response.data.name});
+      setLogin(loginInitialValue);
+      isUserAuthenticated(true);
+      navigate('/home');
     }
   }
   return (
