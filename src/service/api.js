@@ -47,7 +47,7 @@ const processResponse = (response) => {
 const processError = (error) => {
     if(error.response)
     {
-        console.log('Error in response : ',error.toJSON());
+        // console.log('Error in response : ',error.toJSON());
         return {
             isError : true,
             msg : API_NOTIFICATION_MSG.responseFailure,
@@ -56,7 +56,7 @@ const processError = (error) => {
     }
     else if(error.request)
     {
-        console.log('Error in request : ',error.toJSON());
+        // console.log('Error in request : ',error.toJSON());
         return {
             isError : true,
             msg : API_NOTIFICATION_MSG.requestFailure,
@@ -65,7 +65,7 @@ const processError = (error) => {
     }
     else
     {
-        console.log('Error in network : ',error.toJSON());
+        // console.log('Error in network : ',error.toJSON());
         return {
             isError : true,
             msg : API_NOTIFICATION_MSG.networkError,
