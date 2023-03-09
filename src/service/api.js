@@ -1,5 +1,6 @@
 import axios from "axios";
 import { API_NOTIFICATION_MSG, SERVICE_URLS } from "./config.js";
+import { getAccessToken } from "./commonUtils.js";
 
 const API_URL = 'http://localhost:3001';
 
@@ -82,6 +83,9 @@ for(const [key,value] of Object.entries(SERVICE_URLS)){
             url : value.url,
             data : body,
             responseType : value.responseType,
+            headers : {
+                authorization : getAccessToken()
+            },
         })
 }
 

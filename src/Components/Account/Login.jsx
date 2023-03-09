@@ -57,7 +57,7 @@ function Login({isUserAuthenticated}) {
     }
   }
   return (
-      <Grid container alignItems="center" justifyContent="center" marginTop="5%">        
+      <Grid container alignItems="center" justifyContent="center" marginTop="50px">        
         <Box sx={{border: 1,width:"55%",minWidth:300,p:3,boxShadow:20}}>
         <img src={logo} alt="logo" style={{width:"70%",height:200}}/>
         {account==='Login' ? 

@@ -2,6 +2,7 @@ import React, { useState , useEffect, useContext } from 'react';
 import { Grid , Box , FormControl, TextField, TextareaAutosize, Button } from "@mui/material";
 import './create.css';
 import Navbar from '../HomePage/Navbar';
+import { useNavigate } from 'react-router-dom';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import { DataContext } from '../../context/DataProvider';
 import { API } from '../../service/api.js';
@@ -19,6 +20,8 @@ function Create() {
   const [post,setPost] = useState(initialPost);
   const [file,setFile] = useState('');
   const {account} = useContext(DataContext);
+  // const location  = useLocation();
+  const navigate = useNavigate();
   const logo = "http://surl.li/fikac";
   const url = post.picturePath ? post.picturePath : logo; 
   useEffect(() => {
@@ -35,12 +38,23 @@ function Create() {
         }
     }
     getImage();
-  }, [file,post,account])
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [file])
   
   const handleChange = (event) => {
-    const {name,value} =event.target;
-    setPost({...post,[name] : value});
+    const {name,value} = event.target;
+    setPost({...post,
+            createdDate: new Date(),
+            [name] : value});
   }
+
+  const savePost = async () => {
+      const response = await API.createPost(post);
+      if(response.isSuccess){
+        navigate('/home');
+      }
+  }
+
   return (
     <>
       <Navbar/>
@@ -56,7 +70,7 @@ function Create() {
                   <TextField onChange={handleChange} label='Title' type='text' name='title' style={{margin:5}}/>
                   <TextField onChange={handleChange} label='Category' type='text' name='category' style={{margin:5}}/>
                   <TextareaAutosize onChange={handleChange} minRows={10} placeholder="Write a blog..." style={{margin:5}} name='description'/>
-                  <Button variant='contained' style={{margin:5}}>Publish Blog</Button>
+                  <Button variant='contained' style={{margin:5}} onClick={savePost}>Publish Blog</Button>
                 </FormControl>
               </div>
             </Box>
