@@ -9,7 +9,7 @@ function Home() {
   return (
     <>
     <Navbar/>
-    <img src={blogbanner} alt="banner" style={{marginTop:'10%',width:'90%',height:'300px'}}/>
+    <img src={blogbanner} alt="banner" style={{marginTop:'100px',width:'90%',height:'300px'}}/>
     <Grid container>
       <Grid item lg={2} sm={2} xs={12}>
       <div style={{margin:'20px'}}>

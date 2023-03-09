@@ -1,22 +1,68 @@
-import React from 'react';
-import { Grid , Box , FormControl } from "@mui/material";
-import logo from "../../assets/logo.jpg";
+import React, { useState , useEffect, useContext } from 'react';
+import { Grid , Box , FormControl, TextField, TextareaAutosize, Button } from "@mui/material";
+import './create.css';
+import Navbar from '../HomePage/Navbar';
+import AddCircleIcon from '@mui/icons-material/AddCircle';
+import { DataContext } from '../../context/DataProvider';
+import { API } from '../../service/api.js';
 
-function create() {
+const initialPost = {
+  title : '',
+  category : '',
+  picturePath : '',
+  createdDate : '',
+  userName : '',
+  description : ''
+}
+
+function Create() {
+  const [post,setPost] = useState(initialPost);
+  const [file,setFile] = useState('');
+  const {account} = useContext(DataContext);
+  const logo = "http://surl.li/fikac";
+  const url = post.picturePath ? post.picturePath : logo; 
+  useEffect(() => {
+    const getImage = async () => {
+        if(file)
+        {
+          const data = new FormData();
+          data.append("name",file.name);
+          data.append("file",file);
+          // API CALL
+          const response = await API.uploadFile(data);
+          post.picturePath=response.data;
+          post.userName=account.username;
+        }
+    }
+    getImage();
+  }, [file,post,account])
+  
+  const handleChange = (event) => {
+    const {name,value} =event.target;
+    setPost({...post,[name] : value});
+  }
   return (
     <>
-        <Grid container alignItems="center" justifyContent="center" marginTop="5%">        
+      <Navbar/>
+        <Grid container alignItems="center" justifyContent="center" marginTop="100px">        
             <Box sx={{border: 1,width:"55%",minWidth:300,p:3,boxShadow:20}}>
-            <img src={logo} alt="logo" style={{width:"70%",height:200}}/>
-            <Grid container direction="column" alignItems="center" justifyContent="center">
-                <FormControl>
-
+            <img src={url} alt="logo" style={{width:"70%",height:200}}/>
+              <div style={{display:'flex',justifyContent:'center'}}>
+                <FormControl style={{width:"75%"}}>
+                  <label htmlFor='fileInput'>
+                    <AddCircleIcon fontSize="large" color="action"/>
+                  </label>
+                  <input type='file' id='fileInput' style={{display:'none'}} onChange={(event)=>setFile(event.target.files[0])}/>
+                  <TextField onChange={handleChange} label='Title' type='text' name='title' style={{margin:5}}/>
+                  <TextField onChange={handleChange} label='Category' type='text' name='category' style={{margin:5}}/>
+                  <TextareaAutosize onChange={handleChange} minRows={10} placeholder="Write a blog..." style={{margin:5}} name='description'/>
+                  <Button variant='contained' style={{margin:5}}>Publish Blog</Button>
                 </FormControl>
-            </Grid>
+              </div>
             </Box>
         </Grid>
     </>
   )
 }
 
-export default create;
+export default Create;
