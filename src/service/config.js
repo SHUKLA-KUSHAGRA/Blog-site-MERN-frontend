@@ -25,5 +25,6 @@ export const SERVICE_URLS = {
     userSignup : {url : '/signup' , method : 'POST'},
     userLogin : {url : '/login' , method : 'POST'},
     uploadFile : {url : '/file/upload' , method : 'POST'},
-    createPost : {url : '/create' , method : 'POST'}
+    createPost : {url : '/create' , method : 'POST'},
+    getPosts : {url : '/posts' , method : 'GET'}
 }

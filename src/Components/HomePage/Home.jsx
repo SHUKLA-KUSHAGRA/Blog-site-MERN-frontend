@@ -4,6 +4,7 @@ import blogbanner from '../../assets/blog-banner.jpg';
 import { categories } from './data.js';
 import { Button, Grid, Table, TableBody, TableCell, TableHead, TableRow } from '@mui/material';
 import { Link } from 'react-router-dom';
+import Posts from './Posts.jsx';
 
 function Home() {
   return (
@@ -32,9 +33,8 @@ function Home() {
           </TableBody>
         </Table>
       </Grid>
-      {/* POSTS */}
       <Grid container item xs={12} sm={10} lg={10}>
-          <h1>Posts</h1>
+        <Posts/>
       </Grid>
     </Grid>
     </>
