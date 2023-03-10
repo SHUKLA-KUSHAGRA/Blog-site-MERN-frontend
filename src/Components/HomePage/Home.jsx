@@ -13,27 +13,32 @@ function Home() {
     <img src={blogbanner} alt="banner" style={{marginTop:'100px',width:'90%',height:'300px'}}/>
     <Grid container>
       <Grid item lg={2} sm={2} xs={12}>
-      <div style={{margin:'20px'}}>
-        <Link to='/create'>
-        <Button variant='contained'>Create Blog</Button>
-        </Link>
-      </div>
         <Table>
           <TableHead>
             <TableRow>
-              <TableCell style={{textAlign:'center'}}>ALL CATEGORIES</TableCell>
+              <TableCell style={{textAlign:'center'}}>
+                <Link to='/create'>
+                  <Button variant='contained'>Create Blog</Button>
+                </Link>
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell style={{textAlign:'center'}}>
+              <Link to='/home' style={{color : 'black',fontWeight : 400}}>ALL CATEGORIES</Link>
+              </TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {categories.map((category) => (
               <TableRow key={category.id}>
-                <TableCell style={{textAlign:'center'}}>{category.type}</TableCell>
+                <TableCell style={{textAlign:'center'}}>
+                <Link to={`/home/?category=${category.type}`} style={{color : 'black',fontWeight : 400}}>{category.type}</Link></TableCell>
               </TableRow>
             ))}
           </TableBody>
         </Table>
       </Grid>
-      <Grid container item xs={12} sm={10} lg={10}>
+      <Grid container item xs={12} sm={10} lg={10} style={{justifyContent:'space-evenly'}}>
         <Posts/>
       </Grid>
     </Grid>

@@ -1,6 +1,6 @@
 import axios from "axios";
 import { API_NOTIFICATION_MSG, SERVICE_URLS } from "./config.js";
-import { getAccessToken } from "./commonUtils.js";
+import { getAccessToken , getType } from "./commonUtils.js";
 
 const API_URL = 'http://localhost:3001';
 
@@ -14,6 +14,12 @@ const axiosInstance = axios.create({
 
 axiosInstance.interceptors.request.use(
     function(config) {
+        if(config.TYPE.params){
+            config.params = config.TYPE.params;
+        }
+        else if(config.TYPE.query){
+            config.url = config.url + '/' + config.TYPE.query
+        }
         return config;
     },
     function(error){
@@ -86,6 +92,7 @@ for(const [key,value] of Object.entries(SERVICE_URLS)){
             headers : {
                 authorization : getAccessToken()
             },
+            TYPE: getType(value, body),
         })
 }
 

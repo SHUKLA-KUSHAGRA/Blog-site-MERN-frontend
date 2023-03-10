@@ -9,14 +9,18 @@ export const categories = [
     },
     {
         id : 3,
-        type : 'SPORTS'
+        type : 'DEVELOPMENT'
     },
     {
         id : 4,
-        type : 'EDUCATIONAL'
+        type : 'SPORTS'
     },
     {
         id : 5,
+        type : 'EDUCATIONAL'
+    },
+    {
+        id : 6,
         type : 'MISCELLANEOUS'
     }
 ]
