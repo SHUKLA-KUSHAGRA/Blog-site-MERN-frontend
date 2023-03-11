@@ -57,7 +57,7 @@ function PostCard({props}) {
           <p style={{marginLeft : 'auto',color :"text.secondary"}}>Posted By : {props.userName}</p>
       </CardActions>
       <Typography>
-        Created Date : {props.createdDate.split('T')[0]}
+        Created Date : {new Date(props.createdDate).toDateString()}
       </Typography>
     </Card>
     </>

@@ -5,7 +5,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom'
 import { API } from '../../service/api';
 import { DataContext } from '../../context/DataProvider';
 import Navbar from '../HomePage/Navbar';
-// import Comments from './comments/Comments';
+import Comments from './Comments';
 
 const Container = styled(Box)(({ theme }) => ({
   margin : '10px 10%',
@@ -16,7 +16,8 @@ const Container = styled(Box)(({ theme }) => ({
 
 const Image = styled('img')({
     width: '60%',
-    objectFit: 'cover'
+    height : '250px',
+    marginTop : '30px',
 });
 
 const EditIcon = styled(Edit)`
@@ -96,7 +97,7 @@ const DetailsView = () => {
             </Author>
 
             <Typography>{post.description}</Typography>
-            {/* <Comments post={post} /> */}
+            <Comments post={post} />
         </Container>
       </>
     )

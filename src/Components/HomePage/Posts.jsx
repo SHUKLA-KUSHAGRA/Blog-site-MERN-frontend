@@ -23,7 +23,7 @@ function Posts() {
         {
             post && post.length>0 ? post.map((post,idx) => {
                 return <PostCard props={post} key={idx}/>
-            }) : <h1> NO PUBLISHED BLOGS ! PUBLISH ONE NOW </h1>
+            }) : <h1> NO PUBLISHED BLOGS IN THIS CATEGORY ! PUBLISH ONE NOW </h1>
         }
         </>
     )
