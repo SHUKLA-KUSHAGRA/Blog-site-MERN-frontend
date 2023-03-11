@@ -11,6 +11,7 @@ import { red } from '@mui/material/colors';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShareIcon from '@mui/icons-material/Share';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
+import { Link } from 'react-router-dom';
 
 function PostCard({props}) {
   const url = props.picturePath;
@@ -31,17 +32,21 @@ function PostCard({props}) {
         title={props.title}
         subheader={props.category}
       />
-      <CardMedia
+      <Link to={`/details/${props._id}`}>
+        <CardMedia
         component="img"
         height="194"
         image={url}
         alt="Blog-Banner image"
-      />
-      <CardContent>
+        />
+      </Link>
+      <Link to={`/details/${props._id}`}>
+        <CardContent>
         <Typography variant="body2" color="text.secondary">
           {props.description.substring(0,20)}...
         </Typography>
       </CardContent>
+      </Link>
       <CardActions disableSpacing>
         <IconButton aria-label="add to favorites">
           <FavoriteIcon />

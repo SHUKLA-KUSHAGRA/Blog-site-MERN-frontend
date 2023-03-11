@@ -26,5 +26,8 @@ export const SERVICE_URLS = {
     userLogin : {url : '/login' , method : 'POST'},
     uploadFile : {url : '/file/upload' , method : 'POST'},
     createPost : {url : '/create' , method : 'POST'},
-    getPosts : {url : '/posts' , method : 'GET' , params : true}
+    getPosts : {url : '/posts' , method : 'GET' , params : true},
+    fetchDataByID : {url : '/posts' , method : 'GET' , query : true},
+    updatePost : {url : 'update' , method : 'PUT' , query : true},
+    deletePost : {url : 'delete' , method : 'DELETE' , query : true}
 }

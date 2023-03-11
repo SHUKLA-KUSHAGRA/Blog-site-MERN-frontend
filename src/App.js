@@ -4,6 +4,8 @@ import { BrowserRouter , Routes , Route , Navigate , Outlet } from "react-router
 import Login from './Components/Account/Login.jsx';
 import Home from './Components/HomePage/Home.jsx';
 import Create from './Components/CreatePost/Create.jsx';
+import DetailsView from './Components/DetailsPage/DetailsView';
+import Update from './Components/CreatePost/Update';
 import DataProvider from './context/DataProvider';
 
 const PrivateRoute = ({isAuthenticated,...props}) => {
@@ -28,6 +30,12 @@ function App() {
           </Route>
           <Route path='/create' element={<PrivateRoute isAuthenticated={isAuthenticated}/>}>
             <Route path='/create' element={<Create/>}/>
+          </Route>
+          <Route path='/details/:_id' element={<PrivateRoute isAuthenticated={isAuthenticated}/>}>
+            <Route path='/details/:_id' element={<DetailsView/>}/>
+          </Route>
+          <Route path='/update/:_id' element={<PrivateRoute isAuthenticated={isAuthenticated}/>}>
+            <Route path='/update/:_id' element={<Update/>}/>
           </Route>
         </Routes>
       </DataProvider>
