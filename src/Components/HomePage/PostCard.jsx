@@ -9,7 +9,6 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import { red } from '@mui/material/colors';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import ShareIcon from '@mui/icons-material/Share';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { Link } from 'react-router-dom';
 
@@ -51,9 +50,8 @@ function PostCard({props}) {
         <IconButton aria-label="add to favorites">
           <FavoriteIcon />
         </IconButton>
-        <IconButton aria-label="share">
-          <ShareIcon />
-        </IconButton>
+        {/* /NO of likes feature */}
+        {/* <Typography></Typography> */}
           <p style={{marginLeft : 'auto',color :"text.secondary"}}>Posted By : {props.userName}</p>
       </CardActions>
       <Typography>
