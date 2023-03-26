@@ -2,7 +2,8 @@ import axios from "axios";
 import { API_NOTIFICATION_MSG, SERVICE_URLS } from "./config.js";
 import { getAccessToken , getType } from "./commonUtils.js";
 
-const API_URL = 'http://localhost:3001';
+// const API_URL = 'http://localhost:3001';
+const API_URL = 'https://blog-website-backend-7tmv.onrender.com/';
 
 const axiosInstance = axios.create({
     baseURL : API_URL,
