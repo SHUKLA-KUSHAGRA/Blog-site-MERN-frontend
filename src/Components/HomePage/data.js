@@ -19,8 +19,4 @@ export const categories = [
         id : 5,
         type : 'EDUCATIONAL'
     },
-    {
-        id : 6,
-        type : 'MISCELLANEOUS'
-    }
 ]
