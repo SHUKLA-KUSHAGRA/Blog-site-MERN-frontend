@@ -1,3 +1,14 @@
+## Images
+<div align="center">
+  <div style="display: flex;">
+<img src="https://github.com/SHUKLA-KUSHAGRA/Blog-site-MERN-frontend/blob/master/screenshots/Home.png" height="300px" width="300px">
+<img src="https://github.com/SHUKLA-KUSHAGRA/Blog-site-MERN-frontend/blob/master/screenshots/Signup.png" height="300px" width="300px">
+<img src="https://github.com/SHUKLA-KUSHAGRA/Blog-site-MERN-frontend/blob/master/screenshots/Login.png" height="300px" width="300px">
+<img src="https://github.com/SHUKLA-KUSHAGRA/Blog-site-MERN-frontend/blob/master/screenshots/Create%20Blog.png" height="300px" width="300px">
+<img src="https://github.com/SHUKLA-KUSHAGRA/Blog-site-MERN-frontend/blob/master/screenshots/Blog%20Page.png" height="300px" width="300px">
+  </div>
+</div>
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
